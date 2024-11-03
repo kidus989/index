@@ -3,97 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modern Parallax Website</title>
     <style>
-        body{
-            background:linear-gradient(90deg,green,lightgreen);
-            font-family: Arial, Helvetica, sans-serif;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        h2,h3,h4,h5,h6{
-            text-align: center;
+        body {
+            background-color: #e3e4e8;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        button{
-            background-color: #333;
-            border: 2px solid #333;
-            border-radius: 7px;
+        .header {
+            background: url('https://source.unsplash.com/1600x900/?nature') no-repeat center center/cover;
             color: white;
-            position: absolute;
-            top: 2rem;
-            left: 1rem;
-            transition: .5s;
-        }
-        button:hover{
-            font-size: 28px;
-        }
-        h1{
-            color: red;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            font-size: 50px;
-            font-weight: 600 ;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        table{
-            border: 2px solid black;
-        border-collapse: collapse ;
-        margin: 5px;
-        backdrop-filter: blur(10px);
-       
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
         }
-        th,td{
-            border: 2px solid black;
-            margin: 5px;
-            padding: 5px;
+
+        .header h1 {
+            font-size: 2.8em;
+            animation: slideDown 1.5s ease forwards;
+            opacity: 0;
         }
+
+        .header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            animation: fadeIn 2s ease forwards;
+            opacity: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: end;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 1.1em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: #4CAF50;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover::before {
+            width: 100%;
+        }
+        .container {
+            padding: 50px;
+            max-width: 1000px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeIn 1.5s ease;
+        }
+        .card {
+            background-color: white;
+            width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .card:hover img {
+            opacity: 0.7;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            margin-top: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
     </style>
 </head>
 <body>
-    
-    <h1>This is h1 </h1>
-    <h2>This is h2</h2>
-    <h3>This is h3</h3>
-    <h4>This is h4</h4>
-    <h5>This is h5</h5>
-    <h6>This is h6</h6>
-    <button>login</button>
-    
-    <video src=""></video>
-   <div class="box" style="position: absolute; top: 5rem; left: 2rem;">
-    <input type="checkbox">
-    <input type="text" placeholder="type here...">
-    <a href="https://www.google.com">clike here</a>
-    <table>
-        <thead style="background-color: aquamarine;">
-            <tr>
-                <th>hello</th>
-                <th>hello</th>
-                <th>hello</th>
-                <th>hello</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
-            <tr>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-                <td>hello</td>
-            </tr>
-        </tbody>
-    </table>
-    <pre>
-        this is good
-        this is bad
-    </pre>
-   </div>
+    <div class="navbar">
+      <h1 style="font-weight: 400; font-family: Arial, Helvetica, sans-serif; position: absolute; top: 10px; left: 1rem; color: black; text-shadow: 1px 3px 5px #4CAF50;">Nature's Beauty</h1>
+        <a href="#home">Home</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <img src="https://i.pinimg.com/564x/16/2c/63/162c633db62c2cdd07d231e032cf34b5.jpg" alt="Forest">
+            <div class="card-content">
+                <h3>Forest Trails</h3>
+                <p>Enjoy the peaceful beauty of lush green forests and hidden trails.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/564x/7a/d2/81/7ad281f5e4b2333484e10d6b6cdc95ee.jpg" alt="Mountains">
+            <div class="card-content">
+                <h3>Mountain Peaks</h3>
+                <p>Experience breathtaking mountain views that touch the sky.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/9b/f1/13/9bf1133fd369afc1ef009c6681020671.jpg" alt="Beach">
+            <div class="card-content">
+                <h3>Sunny Beaches</h3>
+                <p>Relax on warm, sandy beaches and enjoy the sound of the waves.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/564x/30/9d/8a/309d8a10d67d2c1abdfbfbbe592a8b8a.jpg" alt="Lake">
+            <div class="card-content">
+                <h3>Tranquil Lakes</h3>
+                <p>Find peace by the calm waters of scenic lakes.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2024 Nature's Beauty. All rights reserved.</p>
+    </div>
+
 </body>
 </html>
